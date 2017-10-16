@@ -1,0 +1,54 @@
+main {
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 90px;
+    .picture {
+        width: 960px;
+        margin: 0 auto;
+        padding-top: 36px;
+        div {
+            position: relative;
+            float: left;
+            width: 240px;
+            height: 240px;
+            overflow: hidden;
+            img {
+                width: 100%;
+            }
+            &:hover img {
+                -ms-transform: scale(1.1, 1.1);
+                -webkit-transform: scale(1.1, 1.1);
+                -moz-transform: scale(1.1, 1.1);
+                transform: scale(1.1, 1.1);
+                transition: transform 400ms linear
+            }
+
+            &:hover span {
+                opacity: 1;
+                -ms-transition: opacity 400ms linear;
+                -webkit-transition: opacity 400ms linear;
+                -moz-transition: opacity 400ms linear;
+                transition: opacity 400ms linear;
+                color: #ffffff;
+            }
+            .home-picture-title {
+                position: absolute;
+                bottom: 23px;
+                font-weight: 200;
+                font-size: 18px;
+                opacity: 0;
+                height: 18px;
+                width: 250px;
+                left: 20px;
+                line-height: 20px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+        div:nth-child(1) {
+            width: 480px;
+            height: 480px;
+        }
+    }
+}

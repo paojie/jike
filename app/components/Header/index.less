@@ -1,0 +1,144 @@
+header {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    height: 90px;
+    box-shadow: 0 1px 4px 0 #ececec;
+
+    .head {
+        width: 1200px;
+        line-height: 90px;
+        margin: 0 auto;
+
+        .head-logo {
+            float: left;
+            width: 80px;
+            height: 90px;
+            margin-right: 92px;
+            background: url('../../static/img/head-logo.png') center center no-repeat;
+
+            a {
+                display: block;
+                height: 100%;
+            }
+        }
+
+        .nav {
+
+            
+            position: relative;
+            float: left;
+
+            .nav-bottom-bar{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 84px;
+                height: 3px;
+                background-color:#00B51D;
+                transition: all .3s
+            }
+
+            &[data-index = '1'] .nav-bottom-bar {
+                left: 0;
+            }
+            &[data-index = '2'] .nav-bottom-bar {
+                left: 84px;
+            }
+            &[data-index = '3'] .nav-bottom-bar {
+                left: 168px;
+            }
+            &[data-index = '4'] .nav-bottom-bar {
+                left: 252px;
+            }
+            &[data-index = '5'] .nav-bottom-bar {
+                left: 336px;
+            }
+            
+            li {
+
+                text-align: center;
+                float: left;
+
+                a {
+                    padding: 26px;
+                    color: #333;
+                    font-size: 16px;
+                }
+            }
+
+            li:last-child {
+                a {
+                    padding: 18px;
+                }
+            }
+
+            li.active {
+                background-color: #fbfbfb;
+                font-weight: bolder;
+            }
+        }
+
+        .nav-r {
+            float: right;
+
+            .editor {
+                display: inline-block;
+                box-sizing: border-box; 
+                width: 44px;
+                height: 44px;
+                margin-right: 25px;
+                cursor: pointer;
+                border: 1px solid #57ad68;
+                border-radius: 50%;
+                vertical-align: middle;
+
+                .editor-wrapper{
+                    position: absolute;
+                    width: 38px;
+                    height: 38px;
+                    margin-top: 1.5px;
+                    margin-left: 2px;
+                    border-radius: 50%;
+                    background: linear-gradient(to right,rgba(101,181,117,0.9),#55b668);
+                    border-radius: 50%;
+                }
+
+                .editor-wrapper:hover {
+                    box-shadow: 0 -2px 3px 0 rgba(255,255,255,0.5) inset, 0 2px 3px 0 rgba(255,255,255,0.8) inset;
+                    background: #57ad68;
+                }
+
+                img {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 19px;
+                    height: 20px;
+                    margin-left: -9.5px;
+                    margin-top: -10px;
+                }
+            }
+
+            .h-login {
+                display: inline-block;
+                width: 126px;
+                font-size: 14px;
+                line-height: 44px;
+                text-align: center;
+                border-radius: 25px;
+                color: #57ad68;
+                cursor: pointer;
+                border: 1px solid rgba(120,188,133,0.5);
+            }
+
+            .h-login:hover {
+                background-color: #57ad68;
+                border: 1px solid transparent;
+                color: #fff;
+                transition: all 300ms linear;
+            }
+        }
+    }
+}
