@@ -1,6 +1,10 @@
 import React from 'react';
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import {connect} from 'react-redux';
+import {fetchUser, logOut} from '../../actions'
+import PureRenderMixin from 'react-addons-pure-render-mixin'    
+
 import './index.less'
 let img = {
     p1: require('../../static/img/home-p1.jpg'),
@@ -9,15 +13,37 @@ let img = {
     p4: require('../../static/img/home-p4.jpg'),
     p5: require('../../static/img/home-p5.jpg')
 }
-export default class Home extends React.Component {
+class Home extends React.Component {
     constructor(props) {
         super(props)
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+        this.handleLogout = this.handleLogout.bind(this)        
+    }
+
+
+    handleLogout(){
+        const {dispatch} = this.props;
+
+        localStorage.removeItem('token');
+        
+        // 发送logout action，reducer计算 user设置为{ }
+        dispatch(logOut());
+        // browserHistory.push('/');
+    }
+
+    // 发送fetchUser action获取用户
+    componentDidMount(){
+        console.log('>>>>>>>> 携带token获取用户数据' );
+        const {dispatch} = this.props;
+        dispatch(fetchUser())
     }
 
     render() {
+        const {user} = this.props;
+
         return (
             <div>
-                <Header></Header>
+                <Header logOut={this.handleLogout} user={user}></Header>
                 <main>
                     <div className="picture clearfix">
                         <div>
@@ -51,9 +77,30 @@ export default class Home extends React.Component {
                             </a>
                         </div>
                     </div>
+
+                    <div className="content">
+                        
+                    </div>
                 </main>
                 <Footer></Footer>
             </div>
         )
     }
 };
+
+
+
+function mapStateToProps(state) {
+    const { user } = state
+    // const {
+    //     items: posts
+    // } = postsByAuthor[selectedAuthor] || {
+    //     items: []                                
+    // }
+    return {
+        user
+    }
+}
+
+
+export default connect(mapStateToProps)(Home)
